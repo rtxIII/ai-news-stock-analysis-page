@@ -1,0 +1,81 @@
+name: auto-stock-analysis-daily
+
+on:
+  schedule:
+    # 每天 9:30 (UTC+8) 执行股票分析
+    # UTC 时间为 1:30
+    - cron: "30 1 * * *"
+
+  workflow_dispatch:
+    inputs:
+      map_type:
+        description: '股票映射类型'
+        required: false
+        type: choice
+        options:
+          - stock
+          - ai_watch
+        default: "stock"
+
+concurrency:
+  group: stock-analysis-${{ github.ref_name }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  actions: write
+
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    environment: deepseek
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run Stock Analysis
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ANTHROPIC_BASE_URL: ${{ vars.ANTHROPIC_BASE_URL }}
+          ANTHROPIC_MODEL: ${{ vars.ANTHROPIC_MODEL }}
+        run: |
+          python run_stock_analysis.py --model ${{ vars.ANTHROPIC_MODEL }} --map-type ${{ github.event.inputs.map_type || 'stock' }}
+
+      - name: Commit and push stock reports
+        run: |
+          git config --global user.name 'GitHub Actions Bot'
+          git config --global user.email 'actions@github.com'
+
+          git add page/src/content/post/stock/ || true
+          git add config/analysis.yaml || true
+
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "🤖 Auto update: stock analysis reports"
+            git pull --rebase origin main
+            git push
+            echo "✅ Stock analysis reports committed and pushed"
+          fi
+
+      - name: Trigger site generation
+        if: success()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh workflow run generate-site.yml --ref ${{ github.ref_name }}
