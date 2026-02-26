@@ -51,7 +51,9 @@ ai_analysis:
 
   ai_watch_stock_map:
     HK:
-      - "09618"
+      - "01810"
+    US:
+      - "TSM"
   stock_map:
     HK:
       - "00031"
