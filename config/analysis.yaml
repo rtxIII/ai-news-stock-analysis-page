@@ -51,13 +51,13 @@ ai_analysis:
 
   ai_watch_stock_map:
     HK:
-      - "00700"
-      - "00883"
+      - "00763"
+      - "02269"
+      - "06066"
     CN-A:
-      - "601857"
+      - "600276"
     US:
-      - "CVX"
-      - "XOM"
+      - "MSFT"
   stock_map:
     HK:
       - "00031"
