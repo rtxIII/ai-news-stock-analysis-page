@@ -50,10 +50,13 @@ ai_analysis:
     expire_days: 7                    # 超过 N 天未被提及则移除
 
   ai_watch_stock_map:
+    HK:
+      - "00700"
+      - "03968"
     CN-A:
-      - "300760"
-      - "600036"
       - "600276"
+    US:
+      - "JNJ"
   stock_map:
     HK:
       - "00031"
