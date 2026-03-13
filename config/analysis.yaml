@@ -51,12 +51,12 @@ ai_analysis:
 
   ai_watch_stock_map:
     HK:
-      - "00700"
-      - "03968"
+      - "01093"
     CN-A:
+      - "300015"
       - "600276"
     US:
-      - "JNJ"
+      - "TSLA"
   stock_map:
     HK:
       - "00031"
