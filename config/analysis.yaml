@@ -51,12 +51,12 @@ ai_analysis:
 
   ai_watch_stock_map:
     HK:
-      - "01093"
-      - "01211"
-      - "02196"
       - "02269"
     CN-A:
+      - "300003"
       - "600276"
+    US:
+      - "NVDA"
   stock_map:
     HK:
       - "00031"
