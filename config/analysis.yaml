@@ -51,9 +51,12 @@ ai_analysis:
 
   ai_watch_stock_map:
     CN-A:
-      - "000538"
-      - "300015"
+      - "300003"
       - "600276"
+    US:
+      - "JNJ"
+      - "PFE"
+      - "TSLA"
   stock_map:
     HK:
       - "00031"
