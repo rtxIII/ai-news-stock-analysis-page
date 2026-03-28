@@ -50,13 +50,13 @@ ai_analysis:
     expire_days: 7                    # 超过 N 天未被提及则移除
 
   ai_watch_stock_map:
+    HK:
+      - "00981"
+      - "01093"
     CN-A:
-      - "300003"
+      - "002594"
+      - "300015"
       - "600276"
-    US:
-      - "JNJ"
-      - "PFE"
-      - "TSLA"
   stock_map:
     HK:
       - "00031"
