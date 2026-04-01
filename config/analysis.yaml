@@ -52,10 +52,9 @@ ai_analysis:
   ai_watch_stock_map:
     HK:
       - "01093"
-      - "02269"
     CN-A:
-      - "000661"
-      - "603259"
+      - "002230"
+      - "600276"
   stock_map:
     HK:
       - "00031"
