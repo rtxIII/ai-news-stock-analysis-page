@@ -51,14 +51,14 @@ ai_analysis:
 
   ai_watch_stock_map:
     HK:
-      - "01211"
-      - "02269"
+      - "00883"
     CN-A:
-      - "600276"
+      - "600028"
+      - "601857"
     US:
-      - "JNJ"
-      - "MRK"
-      - "NVDA"
+      - "CVX"
+      - "MSFT"
+      - "XOM"
   stock_map:
     HK:
       - "00031"
