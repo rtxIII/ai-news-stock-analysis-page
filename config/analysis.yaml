@@ -50,14 +50,6 @@ ai_analysis:
     expire_days: 7                    # 超过 N 天未被提及则移除
 
   ai_watch_stock_map:
-    HK:
-      - "00700"
-    CN-A:
-      - "600276"
-      - "603259"
-    US:
-      - "JNJ"
-      - "NVDA"
   stock_map:
     HK:
       - "00031"
